@@ -20,14 +20,14 @@ The following gesture IDs are eliminated: 2 (duck / crouch or hide), 7 (bow / ta
 
 | Gesture ID | Name | Label |
 |:----------:|:----:|:-----:|
-|      1     | Shoot 		| G1_K_Shoot 		|
-|      2     |Throw 		| G2_K_Throw 		|
+|      1     | Shoot        | G1_K_Shoot        |
+|      2     |Throw         | G2_K_Throw        |
 |      3     |Change Weapon | G3_K_ChangeWeapon |
-|      4     | Goggles 		| G4_K_Goggles 		|
-|      5     |Start 		| G5_K_Start 		|
-|      6     |Next 			| G6_K_Next 		|
-|      7     |Wind Up 		| G7_K_WindUp 		|
-|      8     |Tempo 		| G8_K_Tempo 		|
+|      4     | Goggles      | G4_K_Goggles      |
+|      5     |Start         | G5_K_Start        |
+|      6     |Next          | G6_K_Next         |
+|      7     |Wind Up       | G7_K_WindUp       |
+|      8     |Tempo         | G8_K_Tempo        |
 
 ### CGD 2013 Dataset
 [CGD 2013](http://gesture.chalearn.org/2013-multi-modal-challenge/data-2013-challenge) aka italian gesture dataset has 20 italian gesture categories. This dataset consists of both the RGB-D videos and the 3D skeletal data. There are approximately 400 examples for each class. In our database, two gestures related to the leg motion are eliminated. The eliminated gestures include: *ok* and *messidaccordo*. The original dataset has the class names in italics (refer the column, '**Name**'). However, they are translated to English and the labels are consutructed as given in column, '**Label**'. Rest of the 18 gesture categories are considered.
@@ -35,15 +35,15 @@ The following gesture IDs are eliminated: 2 (duck / crouch or hide), 7 (bow / ta
 
 | Gesture ID | Name | Label || Gesture ID | Name | Label |
 |:----------:|:----:|:-----:||:----------:|:----:|:-----:|
-| 9  | vieniqui 		| G9_C_ComeHere       || 18 | cheduepalle 	| G18_C_ThatTwoBalls      |
-| 10 | prendere 		| G10_C_Take          || 19 | cosatifarei 	| G19_C_WhatWouldIDoToYou |
-| 11 | sonostufo 		| G11_C_Tired         || 20 | fame 			| G20_C_Hunger            |
-| 12 | chevuoi 			| G12_C_WhatDoYouWant || 21 | noncenepiu 	| G21_C_NoMore            |
-| 13 | daccordo 		| G13_C_Agree         || 22 | furbo 		| G22_C_Clever            |
-| 14 | perfetto 		| G14_C_Perfect       || 23 | combinato 	| G23_C_Combined          |
-| 15 | vattene 			| G15_C_GetOut        || 24 | freganiente 	| G24_C_DoNotWorry        |
-| 16 | basta 			| G16_C_Just          || 25 | seipazzo 		| G25_C_Crazy             |
-| 17 | buonissimo 		| G17_C_VeryGood      || 26 | tantotempo 	| G26_C_ALongTime         |
+| 9  | vieniqui         | G9_C_ComeHere       || 18 | cheduepalle   | G18_C_ThatTwoBalls      |
+| 10 | prendere         | G10_C_Take          || 19 | cosatifarei   | G19_C_WhatWouldIDoToYou |
+| 11 | sonostufo        | G11_C_Tired         || 20 | fame          | G20_C_Hunger            |
+| 12 | chevuoi          | G12_C_WhatDoYouWant || 21 | noncenepiu    | G21_C_NoMore            |
+| 13 | daccordo         | G13_C_Agree         || 22 | furbo         | G22_C_Clever            |
+| 14 | perfetto         | G14_C_Perfect       || 23 | combinato     | G23_C_Combined          |
+| 15 | vattene          | G15_C_GetOut        || 24 | freganiente   | G24_C_DoNotWorry        |
+| 16 | basta            | G16_C_Just          || 25 | seipazzo      | G25_C_Crazy             |
+| 17 | buonissimo       | G17_C_VeryGood      || 26 | tantotempo    | G26_C_ALongTime         |
 
 
 ## Gesture Attributes
@@ -79,9 +79,9 @@ The nomenclature used to describe the gesture attributes is explained here.
 ## Representing Dataset as a Heatmap
 Each of the 26 categories are represented as 64 dimensional vectors. In addition to binary values, we also computed continuous values i.e. a value of the descriptor can vary between 0 and 1, where, 0 implies absent, 1 implies present, and any other value indicates that partial presence of an attribute. The binary and continuous semantic description matrices (28 x 64) are visualized in the figures given below.
 
-![Binary gesture description matrix](../master/figures/binary-sd-heatmap.PNG)
+![Binary gesture description matrix](../master/figures/binary-sd-heatmap.png)
 
-![Continuous gesture description matrix](../master/figures/continuous-sd-heatmap.PNG)
+![Continuous gesture description matrix](../master/figures/continuous-sd-heatmap.png)
 
 ## Repository Contents
 This section briefly explains the contents of this repository.
