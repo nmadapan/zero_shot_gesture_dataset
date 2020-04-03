@@ -34,7 +34,7 @@ The following gesture IDs are eliminated: 2 (duck / crouch or hide), 7 (bow / ta
 
 
 | Gesture ID | Name | Label || Gesture ID | Name | Label |
-|:----------:|:----:|:-----:||:----------:|:----:|:-----:|
+|:----------:|:----:|:-----:|:-:|:----------:|:----:|:-----:|
 | 9  | vieniqui         | G9_C_ComeHere       || 18 | cheduepalle   | G18_C_ThatTwoBalls      |
 | 10 | prendere         | G10_C_Take          || 19 | cosatifarei   | G19_C_WhatWouldIDoToYou |
 | 11 | sonostufo        | G11_C_Tired         || 20 | fame          | G20_C_Hunger            |
