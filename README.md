@@ -32,6 +32,7 @@ The following gesture IDs are eliminated: 2 (duck / crouch or hide), 7 (bow / ta
 ### CGD 2013 Dataset
 [CGD 2013](http://gesture.chalearn.org/2013-multi-modal-challenge/data-2013-challenge) aka italian gesture dataset has 20 italian gesture categories. This dataset consists of both the RGB-D videos and the 3D skeletal data. There are approximately 400 examples for each class. In our database, two gestures related to the leg motion are eliminated. The eliminated gestures include: *ok* and *messidaccordo*. The original dataset has the class names in italics (refer the column, '**Name**'). However, they are translated to English and the labels are consutructed as given in column, '**Label**'. Rest of the 18 gesture categories are considered.
 
+
 | Gesture ID | Name | Label || Gesture ID | Name | Label |
 |:----------:|:----:|:-----:||:----------:|:----:|:-----:|
 | 9  | vieniqui 		| G9_C_ComeHere       || 18 | cheduepalle 	| G18_C_ThatTwoBalls      |
@@ -43,6 +44,7 @@ The following gesture IDs are eliminated: 2 (duck / crouch or hide), 7 (bow / ta
 | 15 | vattene 			| G15_C_GetOut        || 24 | freganiente 	| G24_C_DoNotWorry        |
 | 16 | basta 			| G16_C_Just          || 25 | seipazzo 		| G25_C_Crazy             |
 | 17 | buonissimo 		| G17_C_VeryGood      || 26 | tantotempo 	| G26_C_ALongTime         |
+
 
 ## Gesture Attributes
 Gesture attributes are key to zero shot learning. Given below are a list of 64 gesture attributes. The approach taken to obtain this list of attributes is described in detail the in the paper. Now, every gesture category is represented as a 64-dimensional binary vector.
@@ -77,9 +79,9 @@ The nomenclature used to describe the gesture attributes is explained here.
 ## Representing Dataset as a Heatmap
 Each of the 26 categories are represented as 64 dimensional vectors. In addition to binary values, we also computed continuous values i.e. a value of the descriptor can vary between 0 and 1, where, 0 implies absent, 1 implies present, and any other value indicates that partial presence of an attribute. The binary and continuous semantic description matrices (28 x 64) are visualized in the figures given below.
 
-![](figures/binary-sd-heatmap.PNG)
+![Binary gesture description matrix](../master/figures/binary-sd-heatmap.PNG)
 
-![](figures/continuous-sd-heatmap.PNG)
+![Continuous gesture description matrix](../master/figures/continuous-sd-heatmap.PNG)
 
 ## Repository Contents
 This section briefly explains the contents of this repository.
