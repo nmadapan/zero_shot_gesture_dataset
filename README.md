@@ -30,7 +30,7 @@ The following gesture IDs are eliminated: 2 (duck / crouch or hide), 7 (bow / ta
 |      8     |Tempo         | G8_K_Tempo        |
 
 ### CGD 2013 Dataset
-[CGD 2013](http://gesture.chalearn.org/2013-multi-modal-challenge/data-2013-challenge) aka italian gesture dataset has 20 italian gesture categories. This dataset consists of both the RGB-D videos and the 3D skeletal data. There are approximately 400 examples for each class. In our database, two gestures related to the leg motion are eliminated. The eliminated gestures include: *ok* and *messidaccordo*. The original dataset has the class names in italics (refer the column, '**Name**'). However, they are translated to English and the labels are consutructed as given in column, '**Label**'. Rest of the 18 gesture categories are considered.
+[CGD 2013](http://gesture.chalearn.org/2013-multi-modal-challenge/data-2013-challenge) aka italian gesture dataset has 20 italian gesture categories. This dataset consists of both the RGB-D videos and the 3D skeletal data. There are approximately 400 examples for each class. In our database, two gestures related to the leg motion are eliminated. The eliminated gestures include: *ok* and *messidaccordo* as their description vectors are similar to that of other classes. The original dataset has the class names in italian (refer the column, '**Name**'). However, they are translated to English and the labels are consutructed as given in column, '**Label**'. Rest of the 18 gesture categories are considered.
 
 
 | Gesture ID | Name | Label || Gesture ID | Name | Label |
