@@ -24,5 +24,3 @@ G23_C_Combined
 G24_C_DoNotWorry
 G25_C_Crazy
 G26_C_ALongTime
-G27_C_PutTogether
-G28_C_Okay
