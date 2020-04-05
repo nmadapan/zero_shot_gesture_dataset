@@ -2,10 +2,18 @@ import sys
 import numpy as np
 import cv2
 from glob import glob
+import os
 from os.path import basename, dirname, join
 import time
 from scipy.io import loadmat
 import json
+
+def json_to_dict(json_filepath):
+	if(not os.path.isfile(json_filepath)):
+		raise IOError('Error! Json file: '+json_filepath+' does NOT exists!')
+	with open(json_filepath, 'r') as fp:
+		var = json.load(fp)
+	return var
 
 def cell_to_lstr(cell_array):
 	'''

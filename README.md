@@ -97,6 +97,11 @@ In our experiments, we used a reduced list of 34 attributes i.e. the descriptors
 * **reduced_continuous_description_matrix.csv:** this file contains the continuous gesture description matrix (28 x 34 dimensional tensor). Each value ranges from 0 to 1.
 * **sd_data.mat:** this file contains the matlab variables related to the class labels, gesture description matrices, descriptor labels, etc.
 
+## Generating new semantic description matrix
+The following procedure is followed to create a new semantic description matrix.
+1. Run ``` python3 visualize_gestures.py -g 1``` to visualize the gesture 1. This will print the current semantic descriptors that are associated with this gesture. Now, manually verify if those descriptors are correct. If they are wrong, manually edit them in *sd_transform.json* file. In addition to *old* and *new* descriptors, the keys: *sym* (true if the gesture is symmetrical) and *modified* (true if descriptors are corrected) are also added in the *sd_transform.json* file.  Repeat this procedure for all the gesture ids. Once this is done, you have a complete *sd_transform.json* file.
+2. Run ```python3 verify_sd_transform.py``` to conduct sanity checks on *sd_transform.json* file. These tests make sure that there are no typos or inconsistencies in the json file. This script prints the inconsistencies so you can go and manually fix them. Next, it also prints the descriptors that are removed/added/modified with respect to each gesture for manual verification.
+3. Run ```python3 create_new_sd_matrix.py``` to generate a new *new_data.mat* file containing the binary and continuous description matrices of the gesture categories.
 
 ## How to cite ?
 

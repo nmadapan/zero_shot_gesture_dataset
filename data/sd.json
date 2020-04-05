@@ -1,0 +1,120 @@
+{
+	"LHM":
+		{
+			"Left": 0,
+			"Right": 1,
+			"Up": 2,
+			"Down": 3,
+			"Forward": 4,
+			"Backward": 5,
+			"Clockwise": 6,
+			"CounterClockwise": 7,
+			"Iterative": 8,
+			"Circular": 9,
+			"Rectangular": 10,
+			"None": 11
+		},
+
+	"RHM":
+		{
+			"Left": 12,
+			"Right": 13,
+			"Up": 14,
+			"Down": 15,
+			"Forward": 16,
+			"Backward": 17,
+			"Clockwise": 18,
+			"CounterClockwise": 19,
+			"Iterative": 20,
+			"Circular": 21,
+			"Rectangular": 22,
+			"None": 23
+		},
+
+	"OM":
+		{
+			"Circular": 24,
+			"Rectangular": 25,
+			"Inward": 26,
+			"Outward": 27,
+			"None": 28
+		},
+
+	"LHD":
+		{
+			"Left": 29,
+			"Right": 30,
+			"Up": 31,
+			"Down": 32,
+			"Forward": 33,
+			"Backward": 34,
+			"None": 35
+		},
+
+	"RHD":
+		{
+			"Left": 36,
+			"Right": 37,
+			"Up": 38,
+			"Down": 39,
+			"Forward": 40,
+			"Backward": 41,
+			"None": 42
+		},
+
+	"LHOF":
+		{
+			"0": 43,
+			"1": 44,
+			"2": 45,
+			"3": 46,
+			"4": 47,
+			"5": 48,
+			"None": 49
+		},
+
+	"RHOF":
+		{
+			"0": 50,
+			"1": 51,
+			"2": 52,
+			"3": 53,
+			"4": 54,
+			"5": 55,
+			"None": 56
+		},
+
+	"LHP":
+		{
+			"Coronal": 57,
+			"Sagittal": 58,
+			"Transverse": 59,
+			"None": 60
+		},
+
+	"RHP":
+		{
+			"Coronal": 61,
+			"Sagittal": 62,
+			"Transverse": 63,
+			"None": 64
+		},
+
+	"POB":
+		{
+			"Eyes": 65,
+			"Nose": 66,
+			"Mouth": 67,
+			"Ear": 68,
+			"Head": 69,
+			"None": 70
+		},
+
+	"GP":
+		{
+			"AboveEyes": 71,
+			"BetweenEyesAndChest": 72,
+			"BelowChest": 73,
+			"None": 74
+		}
+}

@@ -1,0 +1,185 @@
+{
+	"G1_K_Shoot":
+	{
+		"sym":  true ,
+		"modified":  true ,
+		"old":  ["LHM_Up", "LHM_Forward", "RHM_Up", "RHM_Forward", "OM_Inward", "LHD_Forward", "RHD_Forward", "LHP_Sagittal", "RHP_Sagittal", "GP_BetweenEyesAndChest"] ,
+		"new":  ["LHM_Up", "LHM_Forward", "RHM_Up", "RHM_Forward", "OM_Inward", "LHD_Forward", "RHD_Forward", "LHP_Sagittal", "RHP_Sagittal", "GP_BetweenEyesAndChest", "LHOF_2", "RHOF_2"]
+	},
+	"G2_K_Throw":
+	{
+		"sym":  false ,
+		"modified":  false ,
+		"old":  ["LHM_Up", "LHM_Forward", "LHD_Forward", "RHD_Down", "LHOF_0", "LHOF_5", "RHOF_5", "LHP_Sagittal", "GP_BetweenEyesAndChest"] ,
+		"new":  ["LHM_Up", "LHM_Forward", "LHD_Forward", "RHD_Down", "LHOF_0", "LHOF_5", "RHOF_5", "LHP_Sagittal", "GP_BetweenEyesAndChest"]
+	},
+	"G3_K_ChangeWeapon":
+	{
+		"sym":  false ,
+		"modified":  true ,
+		"old":  ["LHM_Up", "LHM_Down", "LHM_Forward", "LHD_Down", "RHD_Down", "LHOF_0", "RHOF_5", "LHP_Coronal", "LHP_Sagittal", "LHP_Transverse", "GP_BetweenEyesAndChest", "GP_BelowChest"] ,
+		"new":  ["LHM_Right", "LHM_Up", "LHM_Down", "LHM_Forward", "LHM_Backward", "LHD_Up", "LHD_Down", "RHD_Down", "LHOF_0", "RHOF_5", "LHP_Coronal", "LHP_Sagittal", "LHP_Transverse", "GP_BetweenEyesAndChest", "GP_BelowChest"]
+	},
+	"G4_K_Goggles":
+	{
+		"sym":  true ,
+		"modified":  true ,
+		"old":  ["LHM_Up", "RHM_Up", "OM_Inward", "LHD_Up", "RHD_Up", "LHP_Sagittal", "RHP_Sagittal", "POB_Eyes", "GP_BetweenEyesAndChest"] ,
+		"new":  ["LHM_Up", "RHM_Up", "OM_Inward", "LHD_Up", "RHD_Up", "LHP_Sagittal", "RHP_Sagittal", "POB_Head", "GP_BetweenEyesAndChest"]
+	},
+	"G5_K_Start":
+	{
+		"sym":  true ,
+		"modified":  false ,
+		"old":  ["LHM_Up", "RHM_Up", "OM_Outward", "LHD_Up", "RHD_Up", "LHOF_0", "RHOF_0", "LHP_Coronal", "RHP_Coronal", "GP_AboveEyes"] ,
+		"new":  ["LHM_Up", "RHM_Up", "OM_Outward", "LHD_Up", "RHD_Up", "LHOF_0", "RHOF_0", "LHP_Coronal", "RHP_Coronal", "GP_AboveEyes"]
+	},
+	"G6_K_Next":
+	{
+		"sym":  false ,
+		"modified":  true ,
+		"old":  ["LHM_Right", "LHD_Up", "RHD_Down", "LHOF_5", "RHOF_5", "LHP_Transverse", "GP_BetweenEyesAndChest"] ,
+		"new":  ["LHM_Left", "LHD_Up", "RHD_Down", "LHOF_5", "RHOF_5", "LHP_Transverse", "GP_BetweenEyesAndChest"]
+	},
+	"G7_K_WindUp":
+	{
+		"sym":  true ,
+		"modified":  true ,
+		"old":  ["LHM_Up", "LHM_Circular", "RHM_Up", "RHM_Clockwise", "RHM_Circular", "OM_Circular", "LHD_Up", "RHD_Up", "LHOF_0", "RHOF_0", "LHP_Coronal", "RHP_Coronal", "GP_AboveEyes", "GP_BetweenEyesAndChest"] ,
+		"new":  ["LHM_Left", "LHM_Right", "LHM_Up", "LHM_Down", "LHM_CounterClockwise", "LHM_Circular", "RHM_Left", "RHM_Right", "RHM_Up", "RHM_Down", "RHM_Clockwise", "RHM_Circular", "OM_Circular", "LHD_Up", "RHD_Up", "LHOF_0", "RHOF_0", "LHP_Coronal", "RHP_Coronal", "GP_AboveEyes", "GP_BetweenEyesAndChest"]
+	},
+	"G8_K_Tempo":
+	{
+		"sym":  true ,
+		"modified":  false ,
+		"old":  ["LHM_Up", "LHM_Down", "LHM_Iterative", "RHM_Up", "RHM_Down", "RHM_Iterative", "OM_Outward", "LHD_Up", "RHD_Up", "LHOF_5", "RHOF_5", "LHP_Coronal", "RHP_Coronal", "GP_AboveEyes"] ,
+		"new":  ["LHM_Up", "LHM_Down", "LHM_Iterative", "RHM_Up", "RHM_Down", "RHM_Iterative", "OM_Outward", "LHD_Up", "RHD_Up", "LHOF_5", "RHOF_5", "LHP_Coronal", "RHP_Coronal", "GP_AboveEyes"]
+	},
+	"G9_C_ComeHere":
+	{
+		"sym":  false ,
+		"modified":  true ,
+		"old":  ["LHM_Up", "LHM_Backward", "LHM_Iterative", "OM_Inward", "LHD_Up", "RHD_Down", "LHOF_5", "RHOF_5", "LHP_Sagittal", "GP_BetweenEyesAndChest"] ,
+		"new":  ["LHM_Up", "LHM_Forward", "LHM_Backward", "LHM_Iterative", "OM_Inward", "LHD_Up", "RHD_Down", "LHOF_5", "RHOF_5", "LHP_Sagittal", "GP_BetweenEyesAndChest"]
+	},
+	"G10_C_Take":
+	{
+		"sym":  false ,
+		"modified":  true ,
+		"old":  ["LHM_Left", "LHM_Right", "LHM_Up", "LHM_Iterative", "OM_Inward", "LHD_Forward", "RHD_Down", "LHOF_5", "RHOF_5", "LHP_Transverse", "GP_BelowChest"] ,
+		"new":  ["LHM_Left", "LHM_Right", "LHM_Iterative", "OM_Inward", "LHD_Forward", "RHD_Down", "LHOF_5", "RHOF_5", "LHP_Transverse", "GP_BelowChest"]
+	},
+	"G11_C_Tired":
+	{
+		"sym":  false ,
+		"modified":  false ,
+		"old":  ["LHM_Up", "LHM_Forward", "LHM_Backward", "LHM_Iterative", "LHD_Down", "RHD_Down", "LHOF_5", "RHOF_5", "LHP_Sagittal", "GP_BetweenEyesAndChest"] ,
+		"new":  ["LHM_Up", "LHM_Forward", "LHM_Backward", "LHM_Iterative", "LHD_Down", "RHD_Down", "LHOF_5", "RHOF_5", "LHP_Sagittal", "GP_BetweenEyesAndChest"]
+	},
+	"G12_C_WhatDoYouWant":
+	{
+		"sym":  true ,
+		"modified":  false ,
+		"old":  ["LHM_Up", "LHM_Down", "LHM_Iterative", "RHM_Up", "RHM_Down", "RHM_Iterative", "LHD_Up", "RHD_Up", "LHP_Coronal", "RHP_Coronal", "GP_BelowChest"] ,
+		"new":  ["LHM_Up", "LHM_Down", "LHM_Iterative", "RHM_Up", "RHM_Down", "RHM_Iterative", "LHD_Up", "RHD_Up", "LHP_Coronal", "RHP_Coronal", "GP_BelowChest"]
+	},
+	"G13_C_Agree":
+	{
+		"sym":  true ,
+		"modified":  true ,
+		"old":  ["LHM_Left", "LHM_Right", "LHM_Up", "LHM_Iterative", "RHM_Left", "RHM_Right", "RHM_Up", "RHM_Iterative", "OM_Inward", "OM_Outward", "LHD_Forward", "RHD_Forward", "LHOF_1", "RHOF_1", "LHP_Transverse", "RHP_Transverse", "GP_BetweenEyesAndChest"] ,
+		"new":  ["LHM_Left", "LHM_Right", "LHM_Iterative", "RHM_Left", "RHM_Right", "RHM_Iterative", "OM_Inward", "OM_Outward", "LHD_Forward", "RHD_Forward", "LHOF_1", "RHOF_1", "LHP_Transverse", "RHP_Transverse", "GP_BetweenEyesAndChest"]
+	},
+	"G14_C_Perfect":
+	{
+		"sym":  false ,
+		"modified":  true ,
+		"old":  ["LHM_Right", "LHM_Up", "LHM_Forward", "OM_Outward", "LHD_Up", "RHD_Down", "LHOF_5", "RHOF_5", "LHP_Coronal", "LHP_Sagittal", "POB_Mouth", "GP_AboveEyes", "GP_BetweenEyesAndChest"] ,
+		"new":  ["LHM_Left", "LHM_Up", "LHM_Forward", "OM_Outward", "LHD_Up", "RHD_Down", "LHOF_0", "LHOF_5", "RHOF_5", "LHP_Coronal", "LHP_Sagittal", "POB_Head", "GP_AboveEyes", "GP_BetweenEyesAndChest"]
+	},
+	"G15_C_GetOut":
+	{
+		"sym":  false ,
+		"modified":  true ,
+		"old":  ["LHM_Up", "LHM_Forward", "OM_Outward", "LHD_Up", "LHD_Forward", "RHD_Down", "LHOF_5", "RHOF_5", "LHP_Sagittal", "GP_BetweenEyesAndChest"] ,
+		"new":  ["LHM_Up", "LHM_Forward", "LHM_Backward", "OM_Outward", "LHD_Up", "LHD_Forward", "RHD_Down", "LHOF_5", "RHOF_5", "LHP_Sagittal", "GP_BetweenEyesAndChest"]
+	},
+	"G16_C_Just":
+	{
+		"sym":  true ,
+		"modified":  true ,
+		"old":  ["LHM_Right", "LHM_Up", "RHM_Left", "RHM_Up", "OM_Outward", "LHD_Right", "LHD_Forward", "RHD_Left", "RHD_Forward", "LHOF_5", "RHOF_5", "LHP_Transverse", "RHP_Transverse", "GP_BelowChest"] ,
+		"new":  ["LHM_Left", "RHM_Right", "OM_Outward", "LHD_Left", "LHD_Forward", "RHD_Right", "RHD_Forward", "LHOF_5", "RHOF_5", "LHP_Transverse", "RHP_Transverse", "GP_BelowChest"]
+	},
+	"G17_C_VeryGood":
+	{
+		"sym":  false ,
+		"modified":  false ,
+		"old":  ["LHM_Up", "OM_Circular", "LHD_Up", "RHD_Down", "LHOF_1", "RHOF_5", "LHP_Coronal", "POB_Head", "GP_BetweenEyesAndChest"] ,
+		"new":  ["LHM_Up", "OM_Circular", "LHD_Up", "RHD_Down", "LHOF_1", "RHOF_5", "LHP_Coronal", "POB_Head", "GP_BetweenEyesAndChest"]
+	},
+	"G18_C_ThatTwoBalls":
+	{
+		"sym":  true ,
+		"modified":  false ,
+		"old":  ["LHM_Up", "LHM_Down", "LHM_Iterative", "RHM_Up", "RHM_Down", "RHM_Iterative", "LHOF_5", "RHOF_5", "LHP_Transverse", "RHP_Transverse", "GP_BelowChest"] ,
+		"new":  ["LHM_Up", "LHM_Down", "LHM_Iterative", "RHM_Up", "RHM_Down", "RHM_Iterative", "LHOF_5", "RHOF_5", "LHP_Transverse", "RHP_Transverse", "GP_BelowChest"]
+	},
+	"G19_C_WhatWouldIDoToYou":
+	{
+		"sym":  false ,
+		"modified":  true ,
+		"old":  ["LHM_Up", "OM_Inward", "LHD_Up", "RHD_Down", "LHOF_5", "RHOF_5", "LHP_Coronal", "POB_Mouth", "GP_BetweenEyesAndChest"] ,
+		"new":  ["LHM_Up", "OM_Inward", "LHD_Up", "LHD_Right", "RHD_Down", "LHOF_5", "RHOF_5", "LHP_Coronal", "POB_Head", "GP_BetweenEyesAndChest"]
+	},
+	"G20_C_Hunger":
+	{
+		"sym":  false ,
+		"modified":  true ,
+		"old":  ["LHM_Clockwise", "LHM_Circular", "OM_Circular", "RHD_Down", "LHOF_5", "RHOF_5", "LHP_Transverse", "GP_BelowChest"] ,
+		"new":  ["LHM_Left", "LHM_Right", "LHM_Forward", "LHM_Backward", "LHM_Iterative", "LHD_Right", "RHD_Down", "LHOF_5", "RHOF_5", "LHP_Transverse", "GP_BelowChest"],
+		"disaster": true
+	},
+	"G21_C_NoMore":
+	{
+		"sym":  false ,
+		"modified":  true ,
+		"old":  ["LHM_Up", "OM_Circular", "LHD_Up", "LHD_Forward", "LHOF_2", "RHOF_5", "LHP_Sagittal", "GP_BetweenEyesAndChest"] ,
+		"new":  ["LHM_Circular", "LHM_Iterative", "OM_Circular", "LHD_Up", "LHD_Forward", "LHOF_2", "RHOF_5", "LHP_Sagittal", "GP_BelowChest"]
+	},
+	"G22_C_Clever":
+	{
+		"sym":  false ,
+		"modified":  true ,
+		"old":  ["LHM_Up", "LHD_Up", "RHD_Down", "LHOF_1", "RHOF_5", "LHP_Sagittal", "POB_Eyes", "GP_BetweenEyesAndChest"] ,
+		"new":  ["LHM_Up", "LHD_Up", "RHD_Down", "LHOF_1", "RHOF_5", "LHP_Sagittal", "POB_Head", "GP_BetweenEyesAndChest"]
+	},
+	"G23_C_Combined":
+	{
+		"sym":  true ,
+		"modified":  true ,
+		"old":  ["LHM_Up", "LHM_Forward", "LHM_Backward", "LHM_Iterative", "RHM_Up", "RHM_Forward", "RHM_Backward", "RHM_Iterative", "OM_Inward", "LHD_Up", "LHD_Forward", "RHD_Up", "RHD_Forward", "LHOF_5", "RHOF_5", "LHP_Sagittal", "RHP_Sagittal", "GP_BetweenEyesAndChest"] ,
+		"new":  ["LHM_Forward", "LHM_Backward", "LHM_Iterative", "RHM_Forward", "RHM_Backward", "RHM_Iterative", "OM_Inward", "LHD_Up", "LHD_Forward", "RHD_Up", "RHD_Forward", "LHOF_5", "RHOF_5", "LHP_Sagittal", "RHP_Sagittal", "GP_BelowChest"]
+	},
+	"G24_C_DoNotWorry":
+	{
+		"sym":  false ,
+		"modified":  true ,
+		"old":  ["LHM_Up", "LHM_Forward", "LHD_Forward", "LHOF_5", "RHOF_5", "LHP_Sagittal", "POB_Nose", "GP_BetweenEyesAndChest"] ,
+		"new":  ["LHM_Up", "LHM_Forward", "LHD_Right", "LHD_Up", "LHD_Forward", "LHOF_5", "RHOF_5", "LHP_Sagittal", "POB_Head", "GP_BetweenEyesAndChest"]
+	},
+	"G25_C_Crazy":
+	{
+		"sym":  false ,
+		"modified":  false ,
+		"old":  ["LHM_Up", "LHM_Backward", "LHM_Iterative", "LHD_Up", "RHD_Down", "LHOF_1", "RHOF_5", "LHP_Coronal", "POB_Head", "GP_AboveEyes"] ,
+		"new":  ["LHM_Up", "LHM_Backward", "LHM_Iterative", "LHD_Up", "RHD_Down", "LHOF_1", "RHOF_5", "LHP_Coronal", "POB_Head", "GP_AboveEyes"]
+	},
+	"G26_C_ALongTime":
+	{
+		"sym":  false ,
+		"modified":  false ,
+		"old":  ["LHM_Up", "LHM_Backward", "LHD_Up", "RHD_Down", "LHOF_5", "RHOF_5", "LHP_Sagittal", "GP_AboveEyes"] ,
+		"new":  ["LHM_Up", "LHM_Backward", "LHD_Up", "RHD_Down", "LHOF_5", "RHOF_5", "LHP_Sagittal", "GP_AboveEyes"]
+	}
+}
