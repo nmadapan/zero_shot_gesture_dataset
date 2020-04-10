@@ -1,36 +1,36 @@
 # Dataset for Zero-Shot Gesture Learning (ZSGL)
 
 ## Description
-The main goal of this project is to facilitate zero-shot gesture learning (ZSGL). Zero-shot learning (ZSL) is a transfer learning paradigm in which the training and testing classes are disjoint i.e. the classes encountered during training and testing are different. ZSL relies on the meta-information available either in the form of semantic descriptors or embedding vectors in order to transfer the knowledge gained from the training classes to the classes that were never seen before [1].
+The main goal of this project is to facilitate zero-shot learning for recognizing the unfamiliar gesture categories. Zero-shot learning (ZSL) is a transfer learning paradigm in which the training and testing classes are disjoint i.e. the classes encountered during training and testing are different. ZSL relies on the meta-information available either in the form of semantic descriptors or embedding vectors in order to transfer the knowledge gained from the training classes to the classes that were never seen before [1]. The acronym, ZSGL refers to Zero Shot Gesture Learning.
 
-ZSL was extensively studied in the domains of object recognition [1], neural decoding [2], scene understanding [3]. However, the problem of ZSGL has been hardly studied in the computer vision research due to unavailability of data standard attribute-based datasets for gestures. Hence, in this project, we developed the first ZSGL dataset consisting of gesture categories from MSRC-12 [4] and CGD 2013 [5] datasets.
+ZSL was extensively studied in the domains of object recognition [1], neural decoding [2], scene understanding [3]. However, the problem of ZSGL has been hardly studied in computer vision research due to unavailability of standard attribute-based datasets for gestures. Hence, in this project, we developed the first ZSGL dataset consisting of gesture categories from MSRC-12 [4] and CGD 2013 [5] datasets.
 
 ## Experimental Protocol
 
-First, we relied on the human studies, and literature in gestures, semantics and computational linguistics to develop a list of representative attributes of gesture categories. The idea is to represent each gesture category as a binary vector where zero/one indicates the absence/presence of the respective attribute. If there are *K* attributes, then each category is represented as a *K* dimensional vector.
+First, we relied on the human studies, and literature in gestures, semantics and computational linguistics to develop a list of representative attributes for gesture categories. The idea is to represent each gesture category as a binary vector where zero/one indicates the absence/presence of the respective attribute. If there are *K* attributes, then each category is represented as a *K* dimensional vector.
 
-Next, Amazon Mechanical Turk (AMT) platform was used to create gesture annotations for the gesture categories present in MSRC-12 and CGD 2013 datasets. Each category was annotated by 18-20 AMT workers with respect to the attributes in the database. These annotations are automatically processed to generate the gesture representations. Overall, this dataset consists of 64 gesture attributes, 26 classes (18 categories from CGD 2013 and 8 categories from MSRC-12).
+Next, the Amazon Mechanical Turk (AMT) platform was used to create gesture annotations for the classes present in MSRC-12 and CGD 2013 datasets. Each category was annotated by 18-20 AMT workers with respect to the attributes in the database. These annotations are automatically processed to generate the gesture representations. Overall, this dataset consists of 64 gesture attributes, 26 classes (18 categories from CGD 2013 and 8 categories from MSRC-12).
 
 ## Gesture Categories
 
 ### MSRC-12 Dataset
-[MSRC-12](https://www.microsoft.com/en-us/download/details.aspx?id=52283) aka kinect gesture dataset has 12 categories consisting of gestures with full body motions. The data is available only in the form the skeleton information i.e. the RGB-D videos are not available. Overall, each category has 594 examples. In this dataset, the gestures corresponding to the leg motion are eliminated.
+[MSRC-12](https://www.microsoft.com/en-us/download/details.aspx?id=52283) aka kinect gesture dataset has 12 categories consisting of gestures with full body motions. The data is available only in the form the skeleton information i.e. the RGB-D videos are NOT available. Overall, each category has 594 examples. In this dataset, the gestures corresponding to the leg motion are eliminated.
 
-The following gesture IDs are eliminated: 2 (duck / crouch or hide), 7 (bow / take a bow to end music session), 9 (had enough / protest the music) and 12 (kick). Refer to the [data description](https://nanopdf.com/download/this-document-microsoft-research_pdf) of MSRC-12 dataset for more information. Rest of the 8 gesture categories are considered. Note that these IDs are removed and the gestures are re-indexed from 1 to 8.
+The eliminated gesture IDs are the following: ID-2 (duck / crouch or hide), ID-7 (bow / take a bow to end music session), ID-9 (had enough / protest the music) and ID-12 (kick). Refer to the [data description](https://nanopdf.com/download/this-document-microsoft-research_pdf) of MSRC-12 dataset for more information. Rest of the 8 gesture categories are considered. Note that these IDs are removed and the gestures are re-indexed from 1 to 8.
 
 | Gesture ID | Name | Label |
 |:----------:|:----:|:-----:|
-|      1     | Shoot        | G1_K_Shoot        |
+|      1     |Shoot         | G1_K_Shoot        |
 |      2     |Throw         | G2_K_Throw        |
 |      3     |Change Weapon | G3_K_ChangeWeapon |
-|      4     | Goggles      | G4_K_Goggles      |
+|      4     |Goggles       | G4_K_Goggles      |
 |      5     |Start         | G5_K_Start        |
 |      6     |Next          | G6_K_Next         |
 |      7     |Wind Up       | G7_K_WindUp       |
 |      8     |Tempo         | G8_K_Tempo        |
 
 ### CGD 2013 Dataset
-[CGD 2013](http://gesture.chalearn.org/2013-multi-modal-challenge/data-2013-challenge) aka italian gesture dataset has 20 italian gesture categories. This dataset consists of both the RGB-D videos and the 3D skeletal data. There are approximately 400 examples for each class. In our database, two gestures related to the leg motion are eliminated. The eliminated gestures include: *ok* and *messidaccordo* as their description vectors are similar to that of other classes. The original dataset has the class names in italian (refer the column, '**Name**'). However, they are translated to English and the labels are consutructed as given in column, '**Label**'. Rest of the 18 gesture categories are considered.
+[CGD 2013](http://gesture.chalearn.org/2013-multi-modal-challenge/data-2013-challenge) aka italian gesture dataset has 20 italian gestures. This dataset consists of both the RGB-D videos and the 3D skeletal data. There are approximately 400 examples for each class. In our database, two gestures that are very similar with respect to our attributes are eliminated. The eliminated gestures include: *ok* and *messidaccordo* as their description vectors are similar to that of other classes. The original dataset has the class names in italian (refer the column, '**Name**'). However, they are translated to English and the labels are consutructed as given in column, '**Label**'. Rest of the 18 gesture categories are considered.
 
 
 | Gesture ID | Name | Label || Gesture ID | Name | Label |
@@ -47,7 +47,7 @@ The following gesture IDs are eliminated: 2 (duck / crouch or hide), 7 (bow / ta
 
 
 ## Gesture Attributes
-Gesture attributes are key to zero shot learning. Given below are a list of 64 gesture attributes. The approach taken to obtain this list of attributes is described in detail the in the paper. Now, every gesture category is represented as a 64-dimensional binary vector.
+Gesture attributes are key to zero shot learning. Given below are a list of 64 gesture attributes. The approach taken to obtain this list of attributes is described in detail in our paper. Now, every gesture category is represented as a 64-dimensional binary vector.
 
 | Descriptor | Descriptor | Descriptor | Descriptor | Descriptor | Descriptor | Descriptor | Descriptor |
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
@@ -77,31 +77,31 @@ The nomenclature used to describe the gesture attributes is explained here.
 |GP|General position of gesture|
 
 ## Representing Dataset as a Heatmap
-Each of the 26 categories are represented as 64 dimensional vectors. In addition to binary values, we also computed continuous values i.e. a value of the descriptor can vary between 0 and 1, where, 0 implies absent, 1 implies present, and any other value indicates that partial presence of an attribute. The binary and continuous semantic description matrices (28 x 64) are visualized in the figures given below.
+Each of the 26 categories are represented as 64 dimensional vectors. In addition to binary values, we also computed continuous values i.e. a value of the descriptor varies between 0 and 1, where, 0 implies absent, 1 implies present, and any other value indicates that partial presence of an attribute. The binary and continuous semantic description matrices (26 x 64) are visualized in the figures given below.
 
 ![Binary gesture description matrix](../master/figures/binary-sd-heatmap.png)
 
 ![Continuous gesture description matrix](../master/figures/continuous-sd-heatmap.png)
 
-## Repository Contents
+## Repository Contents [Need to be updated]
 This section briefly explains the contents of this repository.
 * **class_labels.txt:** this file consists of class labels or command names.
 * **full_descriptor_names.txt:** this file consists of the labels of the full list of gesture attributes.
-* **full_binary_description_matrix.csv:** this file contains the binary gesture description matrix (28 x 64 dimensional tensor). The values are either zeroes or ones.
-* **full_continuous_description_matrix.csv:** this file contains the continuous gesture description matrix (28 x 64 dimensional tensor). Each value ranges from 0 to 1.
+* **full_binary_description_matrix.csv:** this file contains the binary gesture description matrix (26 x 64 dimensional tensor). The values are either zeroes or ones.
+* **full_continuous_description_matrix.csv:** this file contains the continuous gesture description matrix (26 x 64 dimensional tensor). Each value ranges from 0 to 1.
 
 In our experiments, we used a reduced list of 34 attributes i.e. the descriptors related to motion plane and fingers are removed. The reduced set of attributes and their values are given below.
 
 * **reduced_descriptor_names.txt:** this file consists of the labels of the reduced list of gesture attributes.
-* **reduced_binary_description_matrix.csv:** this file contains the binary gesture description matrix (28 x 34 dimensional tensor). The values are either zeroes or ones.
-* **reduced_continuous_description_matrix.csv:** this file contains the continuous gesture description matrix (28 x 34 dimensional tensor). Each value ranges from 0 to 1.
+* **reduced_binary_description_matrix.csv:** this file contains the binary gesture description matrix (26 x 34 dimensional tensor). The values are either zeroes or ones.
+* **reduced_continuous_description_matrix.csv:** this file contains the continuous gesture description matrix (26 x 34 dimensional tensor). Each value ranges from 0 to 1.
 * **sd_data.mat:** this file contains the matlab variables related to the class labels, gesture description matrices, descriptor labels, etc.
 
 ## Generating new semantic description matrix
 The following procedure is followed to create a new semantic description matrix.
-1. Run ``` python3 visualize_gestures.py -g 1``` to visualize the gesture 1. This will print the current semantic descriptors that are associated with this gesture. Now, manually verify if those descriptors are correct. If they are wrong, manually edit them in *sd_transform.json* file. In addition to *old* and *new* descriptors, the keys: *sym* (true if the gesture is symmetrical) and *modified* (true if descriptors are corrected) are also added in the *sd_transform.json* file.  Repeat this procedure for all the gesture ids. Once this is done, you have a complete *sd_transform.json* file.
+1. Run ``` python3 visualize_gestures.py -g 1``` to visualize the gesture 1. This will print the current semantic descriptors that are associated with this gesture. Now, manually verify if those descriptors are correct. If they are wrong, manually edit them in *sd_transform.json* file. In addition to *old* and *new* descriptors, the keys: *sym* (true if the gesture is symmetrical) and *modified* (true if descriptors are corrected) are also added in the *sd_transform.json* file. Repeat this procedure for all the gesture ids. Once this is done, you have a complete *sd_transform.json* file.
 2. Run ```python3 verify_sd_transform.py``` to conduct sanity checks on *sd_transform.json* file. These tests make sure that there are no typos or inconsistencies in the json file. This script prints the inconsistencies so you can go and manually fix them. Next, it also prints the descriptors that are removed/added/modified with respect to each gesture for manual verification.
-3. Run ```python3 create_new_sd_matrix.py``` to generate a new *new_data.mat* file containing the binary and continuous description matrices of the gesture categories.
+3. Run ```python3 create_new_sd_matrix.py``` to generate a new *new_sd_data.mat* file containing the binary and continuous description matrices of the gesture categories.
 
 ## How to cite ?
 

@@ -1,23 +1,46 @@
 '''
-	This script implements a class 'SID_Transformer' which helps manipulate the semantic description matrix. For instance, you can switch the left and right hand, remove some group of descriptors, etc.
+	This script implements a class 'SD_Transformer' which helps manipulate the semantic description matrices (full_bin_sd_mat and full_con_sd_mat to obtain bin_sd and con_sd). For instance, you can switch the left and right hand, remove some group of descriptors, etc.
+
+	BIN_DATA_PREFIX = 'full_bin_sd_mat'
+	CON_DATA_PREFIX = 'full_con_sd_mat'
+	OUT_FPATH = join(DATA_FOLDER, 'new_sd_data.mat')
+
+
+	INPUT:
+		* 'sd.json'
+		* 'sd_data_fixed.mat'
+			- 'full_bin_sd_mat' variable in the mat file.
+	OUTPUT:
+		* 'new_sd_data.mat'
+			- 'full_sd_names' (copied)
+			- 'full_cmd_names' (copied)
+			- 'sd_names'
+			- 'full_bin_sd_mat' (copied)
+			- 'full_con_sd_mat' (copied)
+			- 'bin_sd'
+			- 'con_sd'
+			- 'misc': this is a Matlab struct or Python dictionary containing new_sd_ids, new_left_ids, new_right_ids, new_finger_ids, new_plane_ids, etc.
 '''
 
 import sys
-import numpy as np
-import cv2
 from glob import glob
 from os.path import basename, dirname, join
 import time
 from copy import deepcopy
-from scipy.io import loadmat, savemat
-from helpers import *
 import json
 
-class SID_Transformer(object):
+import numpy as np
+from scipy.io import loadmat, savemat
+import cv2
+
+## Custom modules
+from helpers import *
+
+class SD_Transformer(object):
 	def __init__(self, data_folder = r'..\data', sd_fname = 'sd.json', bin_sd_mat = None):
 		'''
-			data_folder: path to a folder containing sd.json file
-			sd_fname: sd.json file containing semantic descriptors in an organized manner
+			data_folder: path to a folder containing sd.json file.
+			sd_fname: sd.json file containing semantic descriptors in an organized manner.
 			bin_sd_mat: A 2D np.ndarray of size (num_classes x num_descriptors). This must be a matrix with only 0 and 1s.
 		'''
 		# Path to the sd.json file
@@ -29,8 +52,8 @@ class SID_Transformer(object):
 		## Prefix of semantic descriptors.
 		self.sd_prefixes = ['LHM', 'RHM', 'OM', 'LHD', 'RHD', 'LHOF', 'RHOF', 'LHP', 'RHP', 'POB', 'GP']
 
-		## Remove 'None' descriptors from sd_info and re-indexes the ids.
-		# This call modifies the self.sd_info variable.
+		## Remove 'None' descriptors from sd_info and re-index the ids.
+		# This call modifies the variable: self.sd_info.
 		self.remove_none_descriptors()
 
 		## list of names of SDs
@@ -38,6 +61,8 @@ class SID_Transformer(object):
 		self.num_sds = len(self.sd_names_list)
 
 	def check_mat(self):
+		# Checks if the self.bin_sd_mat contains ONLY zeroes and ones.
+		# If there are any other values, it raises an exception.
 		if(self.bin_sd_mat is not None):
 			zeroes = (self.bin_sd_mat == 0.0).flatten().sum()
 			ones = (self.bin_sd_mat == 1.0).flatten().sum()
@@ -129,9 +154,26 @@ class SID_Transformer(object):
 		strs = ['OM', 'POB', 'GP']
 		return self.get_ids(strs)
 
-	def get_empty_ids(self, K = 0, use_symmetry = False):
-		## Any descriptor that is present at most K number of times.
-		row_sum = np.sum(self.bin_sd_mat, axis=0)
+	def get_empty_ids(self, K = 0, use_symmetry = False, sd_mat = None):
+		'''
+			Description:
+				Find the SD IDs of any descriptor that is present at most K number of times.
+
+				If use_symmetry is True, a descriptor is included in the empty_ids if and only if that descriptor and its opposite are present at most K number of times.
+
+				If use symmetry is True. For instance, if LHM_Left is present once and LHM_Right is present zero times, and lets say, K = 0. Then, LHM_Right is not included as its opposite (LHM_Left) is present > K times.
+			Input variables:
+				* sd_mat: A 2D np.ndarray of size (num_classes x num_descriptors)
+				* K: An integer value >= 0
+				* use_symmetry: Boolean variable. If True, symmetry between the descriptors is used.
+		'''
+		if(sd_mat is None):
+			assert self.bin_sd_mat is not None, 'SD matrix should be a numpy array. It can not be none'
+			assert isinstance(self.bin_sd_mat, np.ndarray), 'SD matrix should be a numpy array.'
+			assert self.bin_sd_mat.shape[1] == len(self.sd_names_list), 'No. of columns in bin_sd_mat should be equal to the number of descriptors'
+		if(sd_mat is None): sd_mat = np.copy(self.bin_sd_mat)
+
+		row_sum = np.sum(sd_mat, axis=0)
 		if(use_symmetry):
 			left_ids = self.get_left_ids()
 			right_ids = self.get_right_ids()
@@ -142,12 +184,31 @@ class SID_Transformer(object):
 		sd_names = np.copy(self.sd_names_list)[empty_ids]
 		return empty_ids.tolist(), sd_names
 
+	def get_full_ids(self, K = 0, use_symmetry = False, sd_mat = None):
+		'''
+			Description:
+				Find the SD IDs of any descriptor that is absent at most K number of times.
+
+				If use_symmetry is True, a descriptor is included in the full_ids if and only if that descriptor and its opposite are absent at most K number of times.
+
+				If use symmetry is True. For instance, if LHM_Left is absent once and LHM_Right is absent zero times, and lets say, K = 0. Then, LHM_Right is not included as its opposite (LHM_Left) is absent > K times.
+			Input variables:
+				* sd_mat: A 2D np.ndarray of size (num_classes x num_descriptors)
+				* K: An integer value >= 0
+				* use_symmetry: Boolean variable. If True, symmetry between the descriptors is used.
+		'''
+		if(sd_mat is not None):
+			return self.get_empty_ids(K = K, use_symmetry = use_symmetry, sd_mat = 1 - sd_mat)
+		else:
+			return self.get_empty_ids(K = K, use_symmetry = use_symmetry, sd_mat = 1 - self.bin_sd_mat)
+
 	def switch(self, x_ids, y_ids, sd_mat = None):
 		## Exchange the semantic descriptor data between x_ids and y_ids
 		# Returns new sd_matrix and new sd names
-		assert self.bin_sd_mat is not None, 'SD matrix should be a numpy array. It can not be none'
-		assert isinstance(self.bin_sd_mat, np.ndarray), 'SD matrix should be a numpy array.'
-		assert self.bin_sd_mat.shape[1] == len(self.sd_names_list), 'No. of columns in bin_sd_mat should be equal to the number of descriptors'
+		if(sd_mat is None):
+			assert self.bin_sd_mat is not None, 'SD matrix should be a numpy array. It can not be none'
+			assert isinstance(self.bin_sd_mat, np.ndarray), 'SD matrix should be a numpy array.'
+			assert self.bin_sd_mat.shape[1] == len(self.sd_names_list), 'No. of columns in bin_sd_mat should be equal to the number of descriptors'
 		assert len(x_ids) == len(y_ids), 'For switching: length of x_ids and y_ids should be same'
 		if(sd_mat is None): sd_mat = np.copy(self.bin_sd_mat)
 		sd_names = np.copy(self.sd_names_list)
@@ -158,9 +219,10 @@ class SID_Transformer(object):
 	def remove(self, x_ids, sd_mat = None):
 		## Removes the ids present x_ids from the matrix.
 		# Returns new sd_matrix and new sd names
-		assert self.bin_sd_mat is not None, 'SD matrix should be a numpy array. It can not be none'
-		assert isinstance(self.bin_sd_mat, np.ndarray), 'SD matrix should be a numpy array.'
-		assert self.bin_sd_mat.shape[1] == len(self.sd_names_list), 'No. of columns in bin_sd_mat should be equal to the number of descriptors'
+		if(sd_mat is None):
+			assert self.bin_sd_mat is not None, 'SD matrix should be a numpy array. It can not be none'
+			assert isinstance(self.bin_sd_mat, np.ndarray), 'SD matrix should be a numpy array.'
+			assert self.bin_sd_mat.shape[1] == len(self.sd_names_list), 'No. of columns in bin_sd_mat should be equal to the number of descriptors'
 		all_ids = set(range(len(self.sd_names_list)))
 		keep_ids = list(all_ids.difference(set(x_ids)))
 		if(sd_mat is None): sd_mat = np.copy(self.bin_sd_mat)
@@ -195,32 +257,115 @@ class SID_Transformer(object):
 		# Returns new sd_matrix and new sd names
 		return self.remove(self.get_ids(['OM']), sd_mat)
 
-	def remove_empty(self, sd_mat = None):
+	def remove_empty(self, K = 0, use_symmetry = False, sd_mat = None):
 		## Removes the empty ids from the matrix.
 		# Returns new sd_matrix and new sd names
-		return self.remove(self.get_empty_ids()[0], sd_mat)
+		empty_ids = self.get_empty_ids(K = K, use_symmetry = use_symmetry, sd_mat = sd_mat)[0]
+		return self.remove(empty_ids, sd_mat)
 
-	def combine_left_right(self, sd_mat = None):
+	def remove_full(self, K = 0, use_symmetry = False, sd_mat = None):
+		## Removes the full ids from the matrix.
+		# Returns new sd_matrix and new sd names
+		full_ids = self.get_full_ids(K = K, use_symmetry = use_symmetry, sd_mat = sd_mat)[0]
+		return self.remove(full_ids, sd_mat)
+
+	def remove_empty_full(self, K = 0, use_symmetry = False, sd_mat = None):
+		## Removes the empty and full ids from the matrix.
+		# Returns new sd_matrix and new sd names
+		full_ids = self.get_full_ids(K = K, use_symmetry = use_symmetry, sd_mat = sd_mat)[0]
+		empty_ids = self.get_empty_ids(K = K, use_symmetry = use_symmetry, sd_mat = sd_mat)[0]
+		all_ids = sorted(empty_ids + full_ids)
+		return self.remove(all_ids, sd_mat)
+
+	def combine(self, x_ids, y_ids, sd_mat = None, remove_y_ids = False):
+		'''
+			Description:
+				Combines the semantic descriptors x_ids with y_ids and saves in x_ids. 'combine x_ids with y_ids and save in x_ids'
+			Input:
+				x_ids: list of integers
+				y_ids: list of integers
+				sd_mat: If None, self.bin_sd_mat is used instead. Otherwise, sd_mat should be a 2D np.ndarray (num_classes x num_descriptors).
+				remove_y_ids: A boolean variable. If True, it removes y_ids, otherwise keeps the y_ids.
+			Return:
+				Returns new sd_matrix and new sd names
+		'''
+		if(sd_mat is None):
+			assert self.bin_sd_mat is not None, 'SD matrix should be a numpy array. It can not be none'
+			assert isinstance(self.bin_sd_mat, np.ndarray), 'SD matrix should be a numpy array.'
+			assert self.bin_sd_mat.shape[1] == len(self.sd_names_list), 'No. of columns in bin_sd_mat should be equal to the number of descriptors'
+		assert len(x_ids) == len(y_ids), 'For switching: length of x_ids and y_ids should be same'
+		if(sd_mat is None): sd_mat = np.copy(self.bin_sd_mat)
+
+		## Combine x_ids with y_ids.
+		sd_mat[:, x_ids] = np.maximum(sd_mat[:, x_ids], sd_mat[:, y_ids])
+
+		if(remove_y_ids): return self.remove(y_ids, sd_mat)
+		else: return sd_mat, self.sd_names_list
+
+	def combine_left_right(self, sd_mat = None, remove_y_ids = False):
 		## Combines the values corresponding to left and right SD IDs by taking a max of both the values
 		left_ids = self.get_left_ids()
 		right_ids = self.get_right_ids()
-		if(sd_mat is None): sd_mat = np.copy(self.bin_sd_mat)
-		sd_mat[:, left_ids] = np.maximum(sd_mat[:, left_ids], sd_mat[:, right_ids])
-		return self.remove_right(sd_mat)
+		return self.combine(left_ids, right_ids, sd_mat, remove_y_ids = remove_y_ids)
+
+	def _diff(self, lst, rem_ids, re_index_wrt = None):
+		result = list(set(lst).difference(rem_ids))
+		if(re_index_wrt is None): return result
+		else: return [re_index_wrt.index(idx) for idx in result]
+
+	def give_misc_info(self, rem_ids):
+		result = {}
+		old_sd_ids = range(0, len(self.sd_names_list))
+
+		new_sd_ids = self._diff(old_sd_ids, rem_ids)
+		# print(self.sd_names_list[new_sd_ids])
+
+		new_left_ids = self._diff(self.get_left_ids(), rem_ids, re_index_wrt = new_sd_ids)
+		# temp = self._diff(self.get_left_ids(), rem_ids)
+		# print(self.sd_names_list[temp])
+
+		new_right_ids = self._diff(self.get_right_ids(), rem_ids, re_index_wrt = new_sd_ids)
+		# temp = self._diff(self.get_right_ids(), rem_ids)
+		# print(self.sd_names_list[temp])
+
+		new_finger_ids = self._diff(self.get_fing_sensitive_ids(), rem_ids, re_index_wrt = new_sd_ids)
+		# temp = self._diff(self.get_fing_sensitive_ids(), rem_ids)
+		# print(self.sd_names_list[temp])
+
+		new_plane_ids = self._diff(self.get_plane_ids(), rem_ids, re_index_wrt = new_sd_ids)
+		# temp = self._diff(self.get_plane_ids(), rem_ids)
+		# print(self.sd_names_list[temp])
+
+		result['new_sd_ids'] = new_sd_ids
+		result['new_left_ids'] = new_left_ids
+		result['new_right_ids'] = new_right_ids
+		result['new_finger_ids'] = new_finger_ids
+		result['new_plane_ids'] = new_plane_ids
+
+		return result
+
+	# def combine_left_right2(self, sd_mat = None):
+	# 	## Combines the values corresponding to left and right SD IDs by taking a max of both the values
+	# 	left_ids = self.get_left_ids()
+	# 	right_ids = self.get_right_ids()
+	# 	if(sd_mat is None): sd_mat = np.copy(self.bin_sd_mat)
+	# 	sd_mat[:, left_ids] = np.maximum(sd_mat[:, left_ids], sd_mat[:, right_ids])
+	# 	return self.remove_right(sd_mat)
 
 if __name__ == '__main__':
 	## Initialization
 	DATA_FOLDER = r'..\data'
-	MAT_FNAME = r'data_fixed.mat'
+	MAT_FNAME = r'sd_data_fixed.mat'
 	BIN_DATA_PREFIX = 'full_bin_sd_mat'
 	CON_DATA_PREFIX = 'full_con_sd_mat'
-	OUT_FPATH = join(DATA_FOLDER, 'new_data.mat')
+	OUT_FPATH = join(DATA_FOLDER, 'new_sd_data.mat')
 
 	## Read data.mat to get the semantic description matrix
 	data = loadmat(join(DATA_FOLDER, MAT_FNAME))
 
-	## Instantiate SID_Transformer object
-	sid = SID_Transformer(bin_sd_mat = data[BIN_DATA_PREFIX])
+	## Instantiate SD_Transformer object
+	sid = SD_Transformer(bin_sd_mat = data[BIN_DATA_PREFIX])
+	# sid.print_sd_data()
 
 	################################
 	## Manipulate the matrix here ##
@@ -234,19 +379,25 @@ if __name__ == '__main__':
 	# For example, let us say we want to remove ONLY empty ids with K = 3
 	# rem_ids = sid.get_empty_ids(K = 3)[0]
 
+	# For example, let us say we want to remove empty ids with K = 3 by NOT using symmetry and then, combine left and right ids, and then remove right_ids.
+	# sd_mat, _ = sid.combine_left_right()
+	# rem_ids = sid.get_empty_ids(K = 3, use_symmetry = False, sd_mat = sd_mat)[0]
+	# rem_ids += sid.get_right_ids()
+
+	# For example, let us say we want to combine left and right ids, remove empty ids with K = 3 by USING symmetry and then, remove ALL the right_ids.
+	# sd_mat, _ = sid.combine_left_right()
+	# rem_ids = sid.get_empty_ids(K = 3, use_symmetry = True, sd_mat = sd_mat)[0]
+	# rem_ids += sid.get_right_ids()
+
 	# For example, let us say we want to remove ONLY empty ids with K = 3 by using the symmetry between the left and right ids.
 	rem_ids = sid.get_empty_ids(K = 3, use_symmetry = True)[0]
 
-	rem_ids = np.unique(rem_ids)
+	rem_ids = np.unique(rem_ids) # Sorts and removes any duplicates
 	bin_sd, reduced_sd_names = sid.remove(rem_ids)
 	con_sd, _ = sid.remove(rem_ids, data[CON_DATA_PREFIX])
 	new_data = deepcopy(data)
 	new_data['bin_sd'] = bin_sd
 	new_data['con_sd'] = con_sd
-	new_data['reduced_sd_names'] = reduced_sd_names
+	new_data['sd_names'] = reduced_sd_names
+	new_data['misc'] = sid.give_misc_info(rem_ids)
 	if(len(OUT_FPATH) !=  0): savemat(OUT_FPATH, new_data)
-
-# Save a new mat file containing the same set of variables.
-# Debug switch and remove again.
-# Debug new functions properly until you are confident.
-# Proofread everything that you have so far. And wrap things nicely. Updating the README.md and stuff.

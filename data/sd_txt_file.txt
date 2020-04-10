@@ -1,0 +1,75 @@
+LHM :
+	 Left : 0
+	 Right : 1
+	 Up : 2
+	 Down : 3
+	 Forward : 4
+	 Backward : 5
+	 Clockwise : 6
+	 CounterClockwise : 7
+	 Iterative : 8
+	 Circular : 9
+	 Rectangular : 10
+RHM :
+	 Left : 11
+	 Right : 12
+	 Up : 13
+	 Down : 14
+	 Forward : 15
+	 Backward : 16
+	 Clockwise : 17
+	 CounterClockwise : 18
+	 Iterative : 19
+	 Circular : 20
+	 Rectangular : 21
+OM :
+	 Circular : 22
+	 Rectangular : 23
+	 Inward : 24
+	 Outward : 25
+LHD :
+	 Left : 26
+	 Right : 27
+	 Up : 28
+	 Down : 29
+	 Forward : 30
+	 Backward : 31
+RHD :
+	 Left : 32
+	 Right : 33
+	 Up : 34
+	 Down : 35
+	 Forward : 36
+	 Backward : 37
+LHOF :
+	 0 : 38
+	 1 : 39
+	 2 : 40
+	 3 : 41
+	 4 : 42
+	 5 : 43
+RHOF :
+	 0 : 44
+	 1 : 45
+	 2 : 46
+	 3 : 47
+	 4 : 48
+	 5 : 49
+LHP :
+	 Coronal : 50
+	 Sagittal : 51
+	 Transverse : 52
+RHP :
+	 Coronal : 53
+	 Sagittal : 54
+	 Transverse : 55
+POB :
+	 Eyes : 56
+	 Nose : 57
+	 Mouth : 58
+	 Ear : 59
+	 Head : 60
+GP :
+	 AboveEyes : 61
+	 BetweenEyesAndChest : 62
+	 BelowChest : 63

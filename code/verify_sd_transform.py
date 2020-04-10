@@ -1,7 +1,18 @@
 '''
-	The semantic descriptors assigned to each gesture categories are inconsistent in some cases. So, I manually inspected each gesture and its descriptors, and manually corrected them. This information is present in 'sd_transform.json'.
-	This file reads 'sd_transform.json' and conducts sanity checks to make sure that there are no mistakes (typos) in the new descriptors.
+	The semantic descriptors (SD) assigned to each gesture category using MTURK annotations are inconsistent in some cases. So, I manually inspected each gesture (by running visualize_gestures.py) and its descriptors, and manually corrected them. This information is present in 'sd_transform.json'.
+
+	This file reads the file, 'sd_transform.json' and conducts sanity checks to make sure that there are no mistakes (typos) in the new descriptors.
+
+	Note that, the list of command names and the list of SD names present in the MAT_FNAME should be in a cell array format and NOT in the character array format. It is in a char array format: run pmat_to_mmat.m file which does this conversion.
+
+	INPUT:
+		* 'sd_data_mturk2.mat'
+			- 'full_sd_names' variable in the mat file.
+			- 'full_cmd_names' variable in the mat file.
+		* 'sd_transform.json'
+	OUTPUT: None
 '''
+
 import sys
 import numpy as np
 import time
@@ -18,26 +29,24 @@ from helpers import *
 ########################
 # Test 1: When modified flag is set to False, old and new variables should be equivalent. Vice versa otherwise.
 # Test 2: Contents of old and new variables should be present in full_sd_names.
-# Test 3: Print what SD's are added, modified and removed.
+# Test 3: Print what SD's that are added, modified and removed.
 ########################
 
 ########################
 #### Initialization ####
 ########################
 DATA_FOLDER = r'..\data'
-MAT_FNAME = r'data_original.mat'
-SD_TRANSFORM_PATH = join(r'..\backup', 'sd_transform.json')
-BIN_SD_MAT_FNAME = 'full_bin_sd_mat'
+MAT_FNAME = r'sd_data_mturk2.mat'
+SD_TRANSFORM_PATH = join(DATA_FOLDER, 'sd_transform.json')
 SD_LABELS_MAT_FNAME = 'full_sd_names'
-CLASS_LABELS_MAT_FNAME = 'class_labels'
+CLASS_LABELS_MAT_FNAME = 'full_cmd_names'
 ########################
 
 ## Read sd_transform.json
 full_sd_dict = json_to_dict(SD_TRANSFORM_PATH)
 
-## Read data.mat to get the semantid description matrix
+## Read data.mat to get the SD matrix
 data = loadmat(join(DATA_FOLDER, MAT_FNAME))
-bin_sd = data[BIN_SD_MAT_FNAME]
 full_sd_names = np.array(cell_to_lstr(data[SD_LABELS_MAT_FNAME]))
 class_labels = np.array(cell_to_lstr(data[CLASS_LABELS_MAT_FNAME]))
 

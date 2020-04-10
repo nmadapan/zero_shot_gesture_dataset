@@ -1,0 +1,21 @@
+close all;
+clear;
+clc;
+
+INPUT_F
+
+load('..\sd_data_mturk')
+sd_struct = load('..\sd_data_mturk');
+var_names = fieldnames(sd_struct);
+
+for idx = 1 : numel(var_names)
+   if(ischar(eval(var_names{idx})))
+       temp = cellstr(eval(var_names{idx}));
+       assignin('base', var_names{idx}, temp);
+   end
+end
+
+%% Saving files
+save('..\sd_data_mturk2.mat', 'bin_sd', 'con_sd', 'full_cmd_names', ...
+    'full_bin_sd_mat', 'full_con_sd_mat', 'full_sd_names', ...
+    'sd_names')

@@ -4,7 +4,7 @@
 		"sym":  true ,
 		"modified":  true ,
 		"old":  ["LHM_Up", "LHM_Forward", "RHM_Up", "RHM_Forward", "OM_Inward", "LHD_Forward", "RHD_Forward", "LHP_Sagittal", "RHP_Sagittal", "GP_BetweenEyesAndChest"] ,
-		"new":  ["LHM_Up", "LHM_Forward", "RHM_Up", "RHM_Forward", "OM_Inward", "LHD_Forward", "RHD_Forward", "LHP_Sagittal", "RHP_Sagittal", "GP_BetweenEyesAndChest", "LHOF_2", "LHOF_5", "RHOF_2", "RHOF_5"]
+		"new":  ["LHM_Up", "LHM_Forward", "RHM_Up", "RHM_Forward", "OM_Inward", "LHD_Forward", "RHD_Forward", "LHP_Sagittal", "RHP_Sagittal", "GP_BetweenEyesAndChest", "LHOF_2", "RHOF_2"]
 	},
 	"G2_K_Throw":
 	{
@@ -23,7 +23,7 @@
 	"G4_K_Goggles":
 	{
 		"sym":  true ,
-		"modified":  false ,
+		"modified":  true ,
 		"old":  ["LHM_Up", "RHM_Up", "OM_Inward", "LHD_Up", "RHD_Up", "LHP_Sagittal", "RHP_Sagittal", "POB_Eyes", "GP_BetweenEyesAndChest"] ,
 		"new":  ["LHM_Up", "RHM_Up", "OM_Inward", "LHD_Up", "RHD_Up", "LHP_Sagittal", "RHP_Sagittal", "POB_Head", "GP_BetweenEyesAndChest"]
 	},
@@ -95,7 +95,7 @@
 		"sym":  false ,
 		"modified":  true ,
 		"old":  ["LHM_Right", "LHM_Up", "LHM_Forward", "OM_Outward", "LHD_Up", "RHD_Down", "LHOF_5", "RHOF_5", "LHP_Coronal", "LHP_Sagittal", "POB_Mouth", "GP_AboveEyes", "GP_BetweenEyesAndChest"] ,
-		"new":  ["LHM_Left", "LHM_Up", "OM_Outward", "LHD_Up", "RHD_Down", "LHOF_0", "LHOF_5", "RHOF_5", "LHP_Coronal", "LHP_Sagittal", "POB_Head", "GP_AboveEyes", "GP_BetweenEyesAndChest"]
+		"new":  ["LHM_Left", "LHM_Up", "LHM_Forward", "OM_Outward", "LHD_Up", "RHD_Down", "LHOF_0", "LHOF_5", "RHOF_5", "LHP_Coronal", "LHP_Sagittal", "POB_Head", "GP_AboveEyes", "GP_BetweenEyesAndChest"]
 	},
 	"G15_C_GetOut":
 	{
@@ -150,7 +150,7 @@
 	"G22_C_Clever":
 	{
 		"sym":  false ,
-		"modified":  false ,
+		"modified":  true ,
 		"old":  ["LHM_Up", "LHD_Up", "RHD_Down", "LHOF_1", "RHOF_5", "LHP_Sagittal", "POB_Eyes", "GP_BetweenEyesAndChest"] ,
 		"new":  ["LHM_Up", "LHD_Up", "RHD_Down", "LHOF_1", "RHOF_5", "LHP_Sagittal", "POB_Head", "GP_BetweenEyesAndChest"]
 	},
@@ -166,7 +166,7 @@
 		"sym":  false ,
 		"modified":  true ,
 		"old":  ["LHM_Up", "LHM_Forward", "LHD_Forward", "LHOF_5", "RHOF_5", "LHP_Sagittal", "POB_Nose", "GP_BetweenEyesAndChest"] ,
-		"new":  ["LHM_Up", "LHM_Forward", "LHD_Up", "LHD_Forward", "LHOF_5", "RHOF_5", "LHP_Sagittal", "POB_Head", "GP_BetweenEyesAndChest"]
+		"new":  ["LHM_Up", "LHM_Forward", "LHD_Right", "LHD_Up", "LHD_Forward", "LHOF_5", "RHOF_5", "LHP_Sagittal", "POB_Head", "GP_BetweenEyesAndChest"]
 	},
 	"G25_C_Crazy":
 	{
@@ -181,5 +181,5 @@
 		"modified":  false ,
 		"old":  ["LHM_Up", "LHM_Backward", "LHD_Up", "RHD_Down", "LHOF_5", "RHOF_5", "LHP_Sagittal", "GP_AboveEyes"] ,
 		"new":  ["LHM_Up", "LHM_Backward", "LHD_Up", "RHD_Down", "LHOF_5", "RHOF_5", "LHP_Sagittal", "GP_AboveEyes"]
-	},
+	}
 }

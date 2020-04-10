@@ -1,7 +1,6 @@
 import numpy as np
+from scipy.io import savemat
 
-a = np.random.randint(0, 10, (2, 3))
-b = np.random.randint(0, 10, (2, 3))
-print(a)
-print(b)
-print(np.maximum(a, b))
+x = [2, 4, 1, 6]
+print(x.index(-1))
+
