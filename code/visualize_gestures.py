@@ -31,7 +31,7 @@ from helpers import *
 GESTURE_ID = 1 # Gesture ID. Varies from 1 to 26.
 VIDEO_FOLDER_PATH = r'..\media' # Path pointing to directory containing gesture videos
 DATA_FOLDER_PATH = r'..\data' # Path pointing to the directory containing SD data ('sd_data_mturk.mat' or 'sd_data_mturk2.mat')
-MAT_FNAME = r'sd_data_mturk2.mat' # Name of the mat file containing SD data
+MAT_FNAME = r'sd_data_mturk.mat' # Name of the mat file containing SD data
 BIN_SD_MAT_FNAME = 'full_bin_sd_mat' # A variable in the .mat file that contains full binary SD matrix (26 x 64).
 SD_LABELS_MAT_FNAME = 'full_sd_names' # A variable in the .mat file that contains a list of SD names (64 x 1).
 ######################
@@ -53,7 +53,9 @@ print('Gesture: ', basename(vid_fpath))
 ## Obtain corresponding gesture descriptors
 data = loadmat(join(DATA_FOLDER_PATH, MAT_FNAME))
 bin_sd = data[BIN_SD_MAT_FNAME]
-full_sd_names = np.array(cell_to_lstr(data[SD_LABELS_MAT_FNAME]))
+# full_sd_names = np.array(cell_to_lstr(data[SD_LABELS_MAT_FNAME]))
+full_sd_names = np.array(data[SD_LABELS_MAT_FNAME])
+full_sd_names = np.array([temp.strip() for temp in full_sd_names])
 sd_names = full_sd_names[bin_sd[GESTURE_ID-1, :] == 1]
 print(json.dumps(sd_names.tolist()))
 

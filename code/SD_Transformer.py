@@ -181,8 +181,11 @@ class SD_Transformer(object):
 			row_sum[left_ids], row_sum[right_ids] = temp, temp
 		empty_ids = np.nonzero(row_sum <= K)[0].tolist()
 		empty_ids = np.unique(empty_ids)
-		sd_names = np.copy(self.sd_names_list)[empty_ids]
-		return empty_ids.tolist(), sd_names
+		if(len(empty_ids) != 0):
+			sd_names = np.copy(self.sd_names_list)[empty_ids]
+			return empty_ids.tolist(), sd_names
+		else:
+			return [], []
 
 	def get_full_ids(self, K = 0, use_symmetry = False, sd_mat = None):
 		'''
@@ -309,11 +312,29 @@ class SD_Transformer(object):
 		return self.combine(left_ids, right_ids, sd_mat, remove_y_ids = remove_y_ids)
 
 	def _diff(self, lst, rem_ids, re_index_wrt = None):
+		'''
+			Description:
+				Performs set-wise substraction of 'rem_ids' from 'lst'. And then, the resulting elements are re-idexed wrt 're_index_wrt'.
+			Input:
+				lst: list of integers
+				rem_ids: list of integers
+				re_index_wrt: list of integers
+			Return:
+				A list of integers.
+		'''
 		result = list(set(lst).difference(rem_ids))
 		if(re_index_wrt is None): return result
 		else: return [re_index_wrt.index(idx) for idx in result]
 
 	def give_misc_info(self, rem_ids):
+		'''
+			Description:
+				This function generates the IDs of the new SDs, relative SD IDs of left hand, right hand, plane, finger descriptors.
+			Input:
+				rem_ids: list of integers. These are the SD IDs that are need to be removed from the original list of SDs (self.sd_names_list)
+			Return:
+				result: A dictionary. Keys are the 'new_sd_ids', 'new_left_ids', 'new_right_ids', 'new_finger_ids' and 'new_plane_ids', and their values are list of indices.
+		'''
 		result = {}
 		old_sd_ids = range(0, len(self.sd_names_list))
 

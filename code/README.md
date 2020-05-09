@@ -19,6 +19,7 @@ The overall pipeline to generate the semantic description matrices is given as f
 
 * **Issue with scipy.io Library (*Repository: zero_shot_gesture_dataset*)**
 	* There is an issue with the *scipy.io.savemat* function. This function stores the list of strings (python) as a character array in the .mat file instead of storing it as a cell array of strings.
+	* One option is to read *sd_data_mturk.mat* using *scipy.io.loadmat* and manually strip the strings in the form of character array using the function, *strip()*
 	* So, I created a Matlab script *pmat_to_mmat.m* that fixes this issue i.e. list of strings is stored as a character array. This script takes *sd_data_mturk.mat* as an input and outputs *sd_data_mturk2.mat* in which this isse is fixed.
 
 * **Mistakes in SD Data (*Repository: zero_shot_gesture_dataset*)**
@@ -38,6 +39,6 @@ The overall pipeline to generate the semantic description matrices is given as f
 
 * **Overall Pipeline**
 	1. **MTurk Data Collection** &rarr; **Python:** `DescriptorPreprocess.py, MturkPreprocess.py, Preprocess.py` &rarr; `sd_data_mturk.mat` # To create the initial SD data from MTurk data (*Repository: ZSGL_Dataset*).
-	2. `sd_data_mturk.mat` &rarr; **Matlab:** `pmat_to_mmat.m`, &rarr; `sd_data_mturk2.mat` # To convert the list of strings from char arrays to cell arrays (*Repository: zero_shot_gesture_dataset*).
+	2. `sd_data_mturk.mat` &rarr; **Matlab:** `pmat_to_mmat.m` &rarr; `sd_data_mturk2.mat` # To convert the list of strings from char arrays to cell arrays (*Repository: zero_shot_gesture_dataset*).
 	3. `sd_data_mturk2.mat` &rarr; **Python:** `visualize_gestures.py, verify_sd_transform.py, create_new_sd_matrix.py` &rarr; `sd_data_fixed.mat` # To fix the human errors in the MTurk annotations and the SD matrices (*Repository: zero_shot_gesture_dataset*).
 	4. `sd_data_fixed.mat` &rarr; **Python:** `SD_Transformer.py` &rarr; `new_sd_data.mat` # To manipulate the SD matrices in a desired manner (*Repository: zero_shot_gesture_dataset*).

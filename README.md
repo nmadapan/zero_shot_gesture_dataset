@@ -107,7 +107,7 @@ The following procedure is followed to create a new semantic description matrix.
 
 Please cite this article if you use this dataset.
 
-**N. Madapana** and J. Wachs, "Database of Gesture Attributes: Zero Shot Learning for Gesture Recognition," 2019 14th *IEEE International Conference on Automatic Face & Gesture Recognition (FG 2019)*, Lille, France, 2019, pp. 1-8.
+**N. Madapana** and J. Wachs, "[Database of Gesture Attributes: Zero Shot Learning for Gesture Recognition](https://ieeexplore.ieee.org/abstract/document/8756548)", 2019 14th *IEEE International Conference on Automatic Face & Gesture Recognition (FG 2019)*, Lille, France, 2019, pp. 1-8.
 
 ## References
 1. Lampert, Christoph H., Hannes Nickisch, and Stefan Harmeling. "Attribute-based classification for zero-shot visual object categorization." IEEE transactions on pattern analysis and machine intelligence 36, no. 3 (2013): 453-465.

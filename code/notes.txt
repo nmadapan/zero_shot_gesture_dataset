@@ -1,5 +1,4 @@
 ###########################
-* Verify combine, full, empty functions again in SD_Transformer.py
 * See online implementations in ZSL related to DAP, IAP, ESZSL etc. and try to replicate them
 ###########################
 

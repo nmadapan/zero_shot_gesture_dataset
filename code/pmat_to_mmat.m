@@ -16,7 +16,7 @@ clear;
 clc;
 
 %% Initialization 
-BASE_FOLDER = '..';
+BASE_FOLDER = '..\data';
 INPUT_FNAME = 'sd_data_mturk.mat';
 OUTPUT_FNAME = 'sd_data_mturk2.mat';
 
